@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
+
+    let workers = [];
+
+
+    // First worker
     let worker1 = new Worker("Igor", "Bodnar", 20, 10)
     getInfo(worker1);
 
@@ -13,8 +18,28 @@ document.addEventListener('DOMContentLoaded', function(){
 
     console.log("SECOND METHOD---------------------")
 
-    let workMod = new Worker();
-    console
+    let workMod = new Worker("Ion", "Creanga", 10, 176);
+    console.log(workMod.getName());
+    console.log(workMod.getSurname());
+    console.log(workMod.getRate());
+    console.log(workMod.getHours());
+    
+    workMod.increaseSalary(2);
+
+    console.log(workMod.getSalary());
+
+    workMod.setTax(18);
+    console.log(workMod.getSalaryNetto());
+
+    workers.push(worker1);
+    workers.push(worker2);
+    workers.push(workMod);
+
+    console.log("GETTING INFO--------------------------------")
+
+    workers.forEach(worker => {
+        getInfo(worker)
+    });
 
 })
 
@@ -34,7 +59,7 @@ class Worker{
         return this.surname;
     }
 
-    getHourRate(){
+    getRate(){
         return this.hourRate;
     }
 
@@ -42,13 +67,31 @@ class Worker{
         return this.hours;
     }
 
+    increaseSalary(num){
+        this.hourRate += 2;
+    }
+
+    setTax(percent){
+        this.percent = 1-(percent/100);
+    }
+
     getSalary(){
-        return "Salary of " + this.surname + " " + this.name + ": " + (parseInt(this.hourRate) * parseInt(this.hours))
+        // console.log("Salary of " + 
+        //         this.surname + " " + 
+        //         this.name + ": " + 
+        //         (parseInt(this.hourRate) * parseInt(this.hours)) + " = " + 
+        //         this.hourRate + " + " + 
+        //         this.hours)
+        return this.hourRate * this.hours
+    }
+
+    getSalaryNetto(){
+        return this.getSalary() + " - " + this.percent + " = " + (this.getSalary() * this.percent)
     }
 }
 
 function getInfo(worker){
-    console.log(worker.name);
+    console.log("Name : " + worker.name);
     console.log(worker.surname);
     console.log(worker.hourRate);
     console.log(worker.hours);

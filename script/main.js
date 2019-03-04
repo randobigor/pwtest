@@ -5,30 +5,30 @@ document.addEventListener('DOMContentLoaded', function(){
     // First worker
     let worker1 = new Worker("Igor", "Bodnar", 20, 10)
     getInfo(worker1);
-    console.log("----------------------------------");
+    console.log("------------------------------------------------------------------------");
 
 
     // Second worker
     let worker2 = new Worker("Victor", "Emciuc", 15, 24);
     getInfo(worker2);
-    console.log("----------------------------------")
+    console.log("-------------------------------------------------------------------------")
 
     // Mai mare salariu (ex 3)
     highlyPaid(worker1, worker2)
 
 
     // Second Method (ex4 + )
-    console.log("SECOND METHOD---------------------")
+    console.log("-------------------------------SECOND METHOD-----------------------------")
 
     let workMod = new Worker("Ion", "Creanga", 10, 176);
-    console.log(workMod.getName());
-    console.log(workMod.getSurname());
-    console.log(workMod.getRate());
-    console.log(workMod.getHours());
+    console.log("Name: " + workMod.getName());
+    console.log("Surname: " + workMod.getSurname());
+    console.log("Rate: " + workMod.getRate());
+    console.log("Hours: " + workMod.getHours());
     
     // Increasing salary (ex 5)
     workMod.increaseSalary(2);
-    console.log(workMod.getSalary());
+    console.log("Salary: " + workMod.getSalary());
 
     // Setting tax (ex 6)
     workMod.setTax(18);
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
     // Array with workers (ex 7)
-    console.log("GETTING INFO--------------------------------")
+    console.log("-----------------------------GETTING INFO (EX 7) --------------------------")
 
     workers.push(worker1);
     workers.push(worker2);
@@ -109,4 +109,5 @@ function highlyPaid(work1, work2){
     }else{
         console.log(work2.surname + " " + work2.name + " primeste salariu mai mare")
     }
+    console.log("-------------------------------------------------------------------------")
 }

@@ -2,20 +2,22 @@ document.addEventListener('DOMContentLoaded', function(){
 
     let workers = [];
 
-
     // First worker
     let worker1 = new Worker("Igor", "Bodnar", 20, 10)
     getInfo(worker1);
-
     console.log("----------------------------------");
 
+
+    // Second worker
     let worker2 = new Worker("Victor", "Emciuc", 15, 24);
     getInfo(worker2);
-
     console.log("----------------------------------")
 
+    // Mai mare salariu (ex 3)
     highlyPaid(worker1, worker2)
 
+
+    // Second Method (ex4 + )
     console.log("SECOND METHOD---------------------")
 
     let workMod = new Worker("Ion", "Creanga", 10, 176);
@@ -24,18 +26,21 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log(workMod.getRate());
     console.log(workMod.getHours());
     
+    // Increasing salary (ex 5)
     workMod.increaseSalary(2);
-
     console.log(workMod.getSalary());
 
+    // Setting tax (ex 6)
     workMod.setTax(18);
     console.log(workMod.getSalaryNetto());
+
+
+    // Array with workers (ex 7)
+    console.log("GETTING INFO--------------------------------")
 
     workers.push(worker1);
     workers.push(worker2);
     workers.push(workMod);
-
-    console.log("GETTING INFO--------------------------------")
 
     workers.forEach(worker => {
         getInfo(worker)
@@ -92,10 +97,10 @@ class Worker{
 
 function getInfo(worker){
     console.log("Name : " + worker.name);
-    console.log(worker.surname);
-    console.log(worker.hourRate);
-    console.log(worker.hours);
-    console.log(worker.getSalary());
+    console.log("Surname: " + worker.surname);
+    console.log("Hour rate: " + worker.hourRate);
+    console.log("Hours: " + worker.hours);
+    console.log("Salary: " + worker.getSalary());
 }
 
 function highlyPaid(work1, work2){
